@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -n -v "^[$\"\"]" | grep -E "^[[:digit:]]*[0357]:"|cut -d: -f2-
+grep -n -v "^[$\"\"]" | grep -E "^[[:digit:]]*([13579]|1[[:digit:]]*):"|cut -d: -f2-
