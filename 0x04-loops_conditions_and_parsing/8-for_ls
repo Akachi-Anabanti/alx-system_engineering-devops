@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This code utilizes the 'cut' function to display file of the format "x-name" as "name"
+LIST="$(ls)"
+for file in $LIST
+do
+	echo "$file" | cut -d'-' -f2
+done
