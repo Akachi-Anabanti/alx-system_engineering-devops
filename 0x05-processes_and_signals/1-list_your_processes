@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This coe displays a list of running processes
+ps -All
