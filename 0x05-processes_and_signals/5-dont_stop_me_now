@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This program sends a SIGTERM to another program
+kill -SIGTERM "$(pgrep -f 4-to_infinity_and_beyond)"
