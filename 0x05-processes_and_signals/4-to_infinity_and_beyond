@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This code displays 'to infinity and beyond endlessly'
+#+ until CTRL + C
+while true
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
