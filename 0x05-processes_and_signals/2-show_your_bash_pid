@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This coe displays a list of running processes with bash keyword
+# shellcheck disable=SC2009
+ps -auxf | grep "bash"
