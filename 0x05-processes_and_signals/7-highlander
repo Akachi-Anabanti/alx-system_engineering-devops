@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This code displays 'to infinity and beyond endlessly'
+#+ until CTRL + C
+handle_sigterm() {
+	echo "I am Invicible!!!"
+}
+
+trap 'handle_sigterm' SIGTERM
+
+while true
+do
+	echo "To infinity and beyond"
+	sleep 2
+done

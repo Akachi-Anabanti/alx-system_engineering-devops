@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This program sends a SIGTERM to another program
+pkill -SIGTERM -f 7-highlander
