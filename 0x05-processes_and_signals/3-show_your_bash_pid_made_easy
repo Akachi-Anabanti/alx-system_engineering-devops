@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# This code displays the PIDs and process name without ps
+for pid in /proc/[0-9]*
+do
+	if [ -r "$pid/cmdline" ];
+	then
+		name=$(tr -d '\0' < "$pid/cmdline" | grep "bash")
+		if [[ $name ]]; then
+			echo "$(basename "$pid") $(echo "$name" | grep -o -E '\bbash\b')"
+		fi
+	fi
+done
