@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script shows attached IPv4 IPs on a machine
+#+ The 10th field of the output of ifconfig is the ip addresses
+#+ using a '[space]' delimeter
+ifconfig | grep "inet " | cut -d' ' -f10
