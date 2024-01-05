@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script uses netcat to create a listening port
+#+ 98 on local host
+#+ localhost resolves to 127.0.0.1
+nc -l localhost 98
