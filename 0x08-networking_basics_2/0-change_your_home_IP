@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This script configures ubuntu server with the
+#+ the below requirments
+#+ changes the localhost to resolve to 127.0.0.2
+#+ facebook to resolv to 8.8.8.8
+cat /etc/hosts > ~/hosts.new
+sudo cp /etc/hosts /etc/hosts.old
+sed -i "s/127.0.0.1	localhost/127.0.0.2	localhost/g" ~/hosts.new
+echo "8.8.8.8	facebook.com" >> ~/hosts.new
+sudo cat ~/hosts.new | sudo tee /etc/hosts > /dev/null
+rm ~/hosts.new
