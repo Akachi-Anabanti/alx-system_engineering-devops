@@ -3,7 +3,7 @@
 # should match hbttn ... hbtttttn
 
 if ARGV.length == 1
-  regex = /hbt{1,4}n/
+  regex = /hbt{1,5}n/
 
   matches = ARGV[0].scan(regex)
   if matches.empty?
