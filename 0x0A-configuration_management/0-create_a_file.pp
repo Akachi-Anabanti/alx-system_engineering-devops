@@ -1,3 +1,5 @@
+# A manifest for creating a file and changing
+# Owner and group
 file { '/tmp/school':
   ensure  => 'present',
   mode    => '0744',
