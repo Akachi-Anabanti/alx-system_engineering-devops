@@ -4,4 +4,4 @@
 #+ using priv key ~/.shh/school with the user
 #+ ubuntu
 
-ssh -i ~/.ssh/school ubuntu@355598-web-01
+ssh -i ~/.ssh/school ubuntu@98.98.98.98
