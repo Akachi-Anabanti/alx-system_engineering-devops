@@ -1,6 +1,5 @@
+#!/usr/bin/env bash
 # A file that installs and configures nginx on ubuntu
-#
-
 # Install nginx
 package { 'nginx':
   ensure => installed,
