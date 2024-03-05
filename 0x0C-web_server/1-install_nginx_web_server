@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# A script that installs and configures nginx
+
+
+sudo apt-get update
+sudo apt-get install nginx -y
+sudo ufw allow 'Nginx HTTP'
+
+if [ ! -d "/etc/nginx/html" ]; then
+  mkdir /etc/nginx/html
+fi
+
+sudo touch /etc/nginx/html/index.html
+
+sudo bash -c 'echo "Hello World!" > /etc/nginx/html/index.html'
+
+sudo bash -c "cat << 'EOF' > /etc/nginx/sites-available/default
+server {
+  listen  80 default_server;
+  listen  [::]:80 default_server;
+  root  /etc/nginx/html;
+  index index.html index.htm;
+}
+EOF"
+
+sudo service nginx restart
