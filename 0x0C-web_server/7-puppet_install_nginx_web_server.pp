@@ -6,7 +6,7 @@ package { 'nginx':
 }
 
 # create the root directory
-file { 'etc/nginx/html':
+file { '/etc/nginx/html':
   ensure => directory,
   owner  => 'root',
   group  => 'root',
