@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# A script that fixes docker container error
+service apache2 restart
