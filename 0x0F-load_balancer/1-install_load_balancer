@@ -8,6 +8,8 @@ sudo apt-get install \
 	--no-install-recommends software-properties-common
 sudo add-apt-repository ppa:vbernat/haproxy-2.8
 
+sudo apt-get update
+
 sudo apt-get install haproxy=2.8\* -y
 
 sudo bash -c "cat << 'EOF' >> /etc/haproxy/haproxy.cfg
@@ -18,8 +20,8 @@ frontend website
 
 backend web_servers
 	balance roundrobin
-	server web-01 54.172.4.252:80 check
-	server web-02 54.175.109.84:80 check
+	server 355598-web-01 54.172.4.252:80 check
+	server 355598-web-02 54.175.109.84:80 check
 EOF"
 
 sudo service haproxy restart
