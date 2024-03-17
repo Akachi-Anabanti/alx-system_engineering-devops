@@ -24,4 +24,4 @@ backend web_servers
 	server 355598-web-02 54.175.109.84:80 check
 EOF"
 
-sudo service haproxy restart
+sudo service haproxy start
