@@ -6,11 +6,11 @@ sudo apt-get upgrade -y
 
 sudo apt-get install \
 	--no-install-recommends software-properties-common
-sudo add-apt-repository ppa:vbernat/haproxy-2.8
+sudo add-apt-repository ppa:vbernat/haproxy-2.0
 
 sudo apt-get update
 
-sudo apt-get install haproxy=2.8.\* -y
+sudo apt-get install haproxy=2.0\* -y
 sudo echo "ENABLED=1" >> /etc/default/haproxy
 sudo bash -c "cat << 'EOF' >> /etc/haproxy/haproxy.cfg
 
