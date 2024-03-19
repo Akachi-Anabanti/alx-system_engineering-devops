@@ -9,14 +9,38 @@ sudo apt-get update
 sudo apt-get upgrade -y
 
 sudo apt-get install haproxy=2.8\* -y
+
+sudo bash -c 'echo "ENABLED=1" >> /etc/default/haproxy'
+sudo bash -c 'mv /etc/haproxy/haproxy.cfg{,.original}'
+sudo touch /etc/haproxy/haproxy.cfg
+
 sudo bash -c "cat << 'EOF' >> /etc/haproxy/haproxy.cfg
+global
+	log 127.0.0.1 local0 notice
+	maxconn 2000
+	user haproxy
+	group haproxy
 
-frontend website
+defaults
+	log global
+	mode http
+	option http-keep-alive
+	option httplog
+	option dontlognull
+	retries 3
+	option redispatch
+	timeout connect 5000
+	timeout client 10000
+	timeout server 10000
+
+backend hbnb
 	bind :80
-	default_backend web_servers
-
-backend web_servers
+	mode http
+	stats enable
+	stats uri /haproxy?stats
 	balance roundrobin
+	option httpclose
+	option forwardfor
 	server 355598-web-01 54.172.4.252:80 check
 	server 355598-web-02 54.175.109.84:80 check
 EOF"
