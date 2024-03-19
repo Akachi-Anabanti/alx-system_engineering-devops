@@ -1,18 +1,15 @@
 #!/usr/bin/env bash
 # A script to install HAproxy on a server
 
+sudo apt-get install \
+	--no-install-recommends software-properties-common
+echo | sudo add-apt-repository ppa:vbernat/haproxy-2.8
+
 sudo apt-get update
 sudo apt-get upgrade -y
 
-sudo apt-get install \
-	--no-install-recommends software-properties-common
-sudo add-apt-repository ppa:vbernat/haproxy-2.0
-
-sudo apt-get update
-
-sudo apt-get install haproxy=2.0\* -y
+sudo apt-get install haproxy=2.8\* -y
 sudo bash -c "cat << 'EOF' >> /etc/haproxy/haproxy.cfg
-	no option http-use-htx
 
 frontend website
 	bind :80
