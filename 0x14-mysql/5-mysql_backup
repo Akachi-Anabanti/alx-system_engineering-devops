@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# create a gzip backup file of mysqldb
+BACKUP_NAME='backup'
+DATE=$(date +%d-%m-%Y)
+
+if [ $# -ne 1 ]; then
+	echo "Usage: $0 [root password]"
+	exit 1
+fi
+mysqldump -uroot -p"$1" --all-databases > "${BACKUP_NAME}".sql
+tar -czvf "${DATE}".tar.gz "${BACKUP_NAME}".sql
+
