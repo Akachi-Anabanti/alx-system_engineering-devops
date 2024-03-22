@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Creates a user on a server and assigns
+# REPLICATION priviledges
+
+mysql -uroot -p -e "CREATE USER 'holberton_user'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn'; GRANT REPLICATION CLIENT ON *.* TO 'holberton_user'@'localhost'; FLUSH PRIVILEGES;"
