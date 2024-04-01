@@ -7,7 +7,7 @@ echo | sudo add-apt-repository ppa:vbernat/haproxy-2.0
 
 sudo apt-get update
 
-sudo apt-get install -y haproxy=2.0.\*
+sudo apt-get install -y --allow-downgrades haproxy=2.0.\*
 
 echo "ENABLED=1" | sudo tee -a /etc/default/haproxy > /dev/null
 sudo cp /etc/haproxy/haproxy.cfg{,.original}
@@ -17,6 +17,7 @@ printf "%s" "
 frontend www
 	mode http
 	bind :80
+	no option http-use-htx
 	default_backend hbnb
 
 backend hbnb
