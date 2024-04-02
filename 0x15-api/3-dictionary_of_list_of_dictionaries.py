@@ -20,12 +20,12 @@ def get_all():
         print(e)
         return
 
+    info = dict()
     for user in users_info:
-        print(type(user.get("id")))
         list_of_tasks = to_json(user.get("id"))
-        info = {user.get("id"): list_of_tasks}
-        with open("todo_all_employees.json", "a") as file:
-            json.dump(info, file)
+        info.update({user.get("id"): list_of_tasks})
+    with open("todo_all_employees.json", "w") as file:
+        json.dump(info, file)
 
 
 def to_json(user_id):
