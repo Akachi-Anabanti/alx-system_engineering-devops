@@ -5,6 +5,7 @@ import json
 import sys
 import urllib.request
 
+
 def get_todos(user_id):
     """a function that performs the API call"""
     url_tasks = f"https://jsonplaceholder.typicode.com/users/{user_id}/todos"
