@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 """A script that accepts user ID and returns
 Associated data"""
+import json
 import sys
 import urllib.request
-import json
-
 
 def get_todos(user_id):
     """a function that performs the API call"""
