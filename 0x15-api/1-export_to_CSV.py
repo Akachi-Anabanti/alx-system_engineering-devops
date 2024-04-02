@@ -31,7 +31,7 @@ def to_csv(user_id):
         lines = [
                     [
                         user_id,
-                        user_info.get('name'),
+                        user_info.get('username'),
                         task.get("completed"),
                         task.get("title")
                     ]
