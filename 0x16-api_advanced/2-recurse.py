@@ -2,10 +2,9 @@
 """Defines a recursive function
 that queries Reddt API"""
 import requests
-import time
 
 
-def recurse(subreddit, hot_list=[]):
+def recurse(subreddit, hot_list=[], after_value=None):
     """Calls the API with recursion
     Listing JSON responses contain `after` and `before`
     fields which are equivalent to the "next" and "prev"
@@ -22,41 +21,19 @@ def recurse(subreddit, hot_list=[]):
     """
 
     headers = {"User-Agent": "ALX-SE/1.1"}
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json"
+    url = "https://www.reddit.com/r/{}/hot.json?after={}".format(
+            subreddit, after_value)
     res = requests.get(url, headers=headers, allow_redirects=False)
 
     if res.status_code == 200:
         res = res.json()
         posts = res["data"]["children"]
-
         for post in posts:
             hot_list.append(post["data"]["title"])
-        count = res["data"]["dist"]
         after_value = res["data"]["after"]
 
-    def fetch(after_value, count):
-        """The recursive function"""
         if not after_value:
             return hot_list
-        url = f"https://www.reddit.com/r/{subreddit}/hot.json?\
-                after={after_value}&count={count}"
-        res = requests.get(url, headers=headers, allow_redirects=False)
-
-        if res.status_code == 200:
-            res = res.json()
-            posts = res["data"]["children"]
-
-            for post in posts:
-                hot_list.append(post["data"]["title"])
-
-            count += res["data"]["dist"]
-
-            after_value = res["data"]["after"]
-
-            time.sleep(1)
-
-            return fetch(after_value, count)
-        else:
-            return None
-
-    return fetch(after_value, count)
+        return recurse(subreddit, hot_list, after_value)
+    else:
+        return None
