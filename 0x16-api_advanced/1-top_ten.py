@@ -9,7 +9,7 @@ def top_ten(subreddit):
     """Gets the top 10 hot posts"""
 
     header = {"User-Agent": "ALX-SE/1.1"}
-    r = requests.get(f"https://www.reddit.com/r/{subreddit}/hot.json?limit=9",
+    r = requests.get(f"https://www.reddit.com/r/{subreddit}/hot?limit=9",
                      headers=header,
                      allow_redirects=False)
     if r.status_code != 200:
