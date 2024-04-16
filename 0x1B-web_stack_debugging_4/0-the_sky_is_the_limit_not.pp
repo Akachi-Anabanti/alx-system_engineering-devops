@@ -8,6 +8,6 @@ exec {'set-ulimit':
 }
 # Restart
 exec {'restart-nginx':
-  command => 'service nginx restart',
-  user    => 'root'
+  command => 'nginx restart',
+  path    => '/etc/init.d'
 }
